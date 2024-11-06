@@ -4,15 +4,14 @@ def is_adjacent_symbol(x, y):
         (0, -1),         (0, 1),     # Left,                   Right
         (1, -1), (1, 0), (1, 1)      # DOWN Left, DOWN Bottom, DOWN Right
     ]
+    special_chars = {'*', '#', '$', '+', '=', '%', '&', '/', '-', '@'}
     
     for dx, dy in directions:
         nx = x + dx
         ny = y + dy
-        # Check if the new position is within bounds
         if ((0 <= nx < max_X) and (0 <= ny < max_Y)): # bondaries check
-            if lines[ny][nx] == '*' or lines[ny][nx] == '#' or lines[ny][nx] == '$' or lines[ny][nx] == '+' or lines[ny][nx] == '=' or lines[ny][nx] == '%' or lines[ny][nx] == '&' or lines[ny][nx] == '/' or lines[ny][nx] == '$' or lines[ny][nx] == '-' or lines[ny][nx] == '@':
+            if lines[ny][nx] in special_chars:
                 return True
-    
     return False
 
 def is_part_number(lines, column, row, length):
